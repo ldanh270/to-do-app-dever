@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App Dever</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="control" class="content-box">
+        <h1>Dever ToDo App</h1>
+        <div id="add-task">
+          <input type="text" class="add-task" id="add-task-field" placeholder="Thêm mới..." />
+          <button class="add-task" id="add-task-btn">Thêm</button>
+        </div>
+        <div id="level">
+          <span class="option-title">Cấp độ:</span>
+          <div class="level-choices">
+            <label>
+              <input type="radio" class="none" name="level" value="easy" />
+              <span class="level easy-level">Dễ</span>
+            </label>
+            <label>
+              <input type="radio" class="none" name="level" value="normal" />
+              <span class="level normal-level">Bình thường</span>
+            </label>
+            <label>
+              <input type="radio" class="none" name="level" value="hard" />
+              <span class="level hard-level">Khó</span>
+            </label>
+          </div>
+        </div>
+        <div id="filter">
+          <span class="option-title">Lọc</span>
+
+          <div class="custom-dropdown" id="filter-level">
+            <div class="dropdown-btn filter-level">
+              <img src="../src/level-icon.svg" alt="level-icon" />
+              <span class="dropdown-value filter-level">Cấp độ</span>
+              <span>▼</span>
+            </div>
+            <ul class="dropdown-options filter-level">
+              <li data-value="easy">Dễ</li>
+              <li data-value="normal">Bình thường</li>
+              <li data-value="hard">Khó</li>
+              <li data-value="all">Tất cả</li>
+            </ul>
+          </div>
+          <div class="custom-dropdown" id="filter-mark">
+            <div class="dropdown-btn filter-mark">
+              <img src="../src/mark-icon.svg" alt="mark-icon" />
+              <span class="dropdown-value filter-mark">Đánh dấu</span>
+              <span>▼</span>
+            </div>
+            <ul class="dropdown-options filter-mark">
+              <li data-value="marked">Đánh dấu</li>
+              <li data-value="unMarked">Không</li>
+              <li data-value="all">Tất cả</li>
+            </ul>
+          </div>
+          <div class="custom-dropdown" id="filter-sort">
+            <div class="dropdown-btn filter-sort">
+              <img src="../src/sort-icon.svg" alt="sort-icon" />
+              <span class="dropdown-value filter-sort">Sắp xếp</span>
+              <span>▼</span>
+            </div>
+            <ul class="dropdown-options filter-sort">
+              <li data-value="increase">Tăng dần</li>
+              <li data-value="decrease">Giảm dần</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div id="task" class="content-box">
+    </div>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

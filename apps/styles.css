@@ -135,18 +135,6 @@ h1 {
   opacity: 0px;
 }
 
-.easy-level {
-  color: #00ff00;
-}
-
-.normal-level {
-  color: #ffd700;
-}
-
-.hard-level {
-  color: #ff0000;
-}
-
 input[type="radio"]:checked + .level {
   color: #ffffff;
 }
@@ -176,6 +164,8 @@ input[type="radio"]:checked + .hard-level {
   position: relative;
   font-family: Arial, sans-serif;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
 }
 
 .dropdown-btn {
@@ -185,7 +175,7 @@ input[type="radio"]:checked + .hard-level {
   height: 32px;
   gap: 0px;
   border-radius: 36px;
-  border: 1px 0px 0px 0px;
+  border: 1px;
   opacity: 0px;
   border: 1px solid #00000080;
   padding: 6px 8px 6px 8px;
@@ -212,31 +202,42 @@ input[type="radio"]:checked + .hard-level {
   margin: 0;
   padding: 0;
   list-style: none;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  max-height: 200px;
   overflow-y: auto;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: none;
   z-index: 1000;
 
-  padding: 4px 10px 4px 10px;
+  padding: 4px 10px;
   gap: 4px;
   border-radius: 12px;
-  opacity: 0px;
+  background: #ffffffb2;
+  backdrop-filter: blur(30px);
+  border: 1px solid #ccc;
+
+  text-align: center;
 }
 
 .dropdown-options li {
-  padding: 10px 15px;
   cursor: pointer;
   transition: background-color 0.2s ease;
+
+  padding: 3px;
+  margin-top: 10px;
+  gap: 0px;
+  border-radius: 8px;
+  opacity: 0px;
 }
 
-.dropdown-options li:hover {
-  background-color: #f0f0f0;
+.marked:hover,
+.increase:hover {
+  background-color: #007bffbf;
+  color: #ffffff;
 }
 
+.unMarked:hover,
+.decrease:hover {
+  background: #000000bf;
+  color: #ffffff;
+}
 .dropdown-options.active {
   display: block;
 }
@@ -251,8 +252,10 @@ input[type="radio"]:checked + .hard-level {
   align-items: center;
   justify-content: space-between;
 
-  gap: 20px;
   padding: 0px 20px;
+  gap: 0px;
+
+  border-radius: 8px;
 }
 
 .task-item {
@@ -263,29 +266,43 @@ input[type="radio"]:checked + .hard-level {
   flex-grow: 1;
 }
 
-.easy-task {
+.easy-task,
+.easy-level,
+.easy-filter {
   color: #00ff00;
 }
 .easy-task-box:hover .easy-task,
-.easy-task-box:hover {
+.easy-task-box:hover,
+.easy-filter:hover {
   color: #ffffff;
   background-color: #00ff00;
 }
 
-.normal-task {
+.normal-task,
+.normal-level,
+.normal-filter {
   color: #ffd700;
 }
 .normal-task-box:hover .normal-task,
-.normal-task-box:hover {
+.normal-task-box:hover,
+.normal-filter:hover {
   color: #ffffff;
   background-color: #ffd700;
 }
 
-.hard-task {
+.hard-task,
+.hard-level,
+.hard-filter {
   color: #ff0000;
 }
 .hard-task-box:hover .hard-task,
-.hard-task-box:hover {
+.hard-task-box:hover,
+.hard-filter:hover {
   color: #ffffff;
   background-color: #ff0000;
+}
+
+.all:hover {
+  color: #ffffff;
+  background-color: #b4a4a4;
 }

@@ -44,19 +44,8 @@ const displayFilterMark = (value) => {
   if (value === "all") return tasksList
 }
 
-function displayFilter() {
-  listedTasksBox.innerHTML = ""
-  markList = displayFilterMark(currentFilterMark)
-  levelList = displayFilterLevel(currentFilterLevel)
-
-  const unSortList = levelList.filter((task) => markList.includes(task))
-
-  return unSortList
-}
-
 const displayFilterSort = (value, list) => {
-  listedTasksBox.innerHTML = ""
-  let sortedList = []
+  let sortedList = list
   if (value === "increase") {
     sortedList = list.sort((a, b) => {
       const spanA = a.querySelector("span").innerText
@@ -70,6 +59,18 @@ const displayFilterSort = (value, list) => {
       return spanB.localeCompare(spanA)
     })
   }
+  return sortedList
+}
+
+function displayFilter() {
+  listedTasksBox.innerHTML = ""
+  markList = displayFilterMark(currentFilterMark)
+  levelList = displayFilterLevel(currentFilterLevel)
+
+  const unSortList = levelList.filter((task) => markList.includes(task))
+
+  const sortedList = displayFilterSort(currentFilterSort, unSortList)
+
   sortedList.forEach((appliedTask) => {
     listedTasksBox.appendChild(appliedTask)
   })
@@ -105,13 +106,7 @@ function filterBehavior(container) {
       else if (container === filterMark) currentFilterMark = value
       else if (container === filterSort) currentFilterSort = value
 
-      if (container === filterSort) displayFilterSort(value, displayFilter())
-      else {
-        const array = displayFilter()
-        array.forEach((appliedTask) => {
-          listedTasksBox.appendChild(appliedTask)
-        })
-      }
+      displayFilter()
     })
   })
 }
@@ -155,6 +150,7 @@ const createNewTask = (textNote, levelNote) => {
   const markBox = document.createElement("div")
 
   markBox.innerHTML = unMarkedIcon
+  markBox.style.cursor = "pointer"
 
   taskBox.appendChild(checkbox)
   taskBox.appendChild(span)

@@ -18,7 +18,7 @@
           <span class="option-title">Cấp độ:</span>
           <div class="level-choices">
             <label>
-              <input type="radio" class="none" name="level" value="easy" />
+              <input type="radio" class="none" name="level" value="easy" checked/>
               <span class="level easy-level">Dễ</span>
             </label>
             <label>
@@ -41,10 +41,13 @@
               <span>▼</span>
             </div>
             <ul class="dropdown-options filter-level">
-              <li data-value="easy">Dễ</li>
-              <li data-value="normal">Bình thường</li>
-              <li data-value="hard">Khó</li>
-              <li data-value="all">Tất cả</li>
+              <li data-value="easy" class="easy-filter">Dễ</li>
+              <img src="../src/line.svg" alt="line">
+              <li data-value="normal" class="normal-filter">Bình thường</li>
+              <img src="../src/line.svg" alt="line">
+              <li data-value="hard" class="hard-filter">Khó</li>
+              <img src="../src/line.svg" alt="line">
+              <li data-value="all" class="all">Tất cả</li>
             </ul>
           </div>
           <div class="custom-dropdown" id="filter-mark">
@@ -54,9 +57,11 @@
               <span>▼</span>
             </div>
             <ul class="dropdown-options filter-mark">
-              <li data-value="marked">Đánh dấu</li>
-              <li data-value="unMarked">Không</li>
-              <li data-value="all">Tất cả</li>
+              <li data-value="marked" class="marked">Đánh dấu</li>
+              <img src="../src/line.svg" alt="line">
+              <li data-value="unMarked" class="unMarked">Không</li>
+              <img src="../src/line.svg" alt="line">
+              <li data-value="all" class="all">Tất cả</li>
             </ul>
           </div>
           <div class="custom-dropdown" id="filter-sort">
@@ -66,8 +71,9 @@
               <span>▼</span>
             </div>
             <ul class="dropdown-options filter-sort">
-              <li data-value="increase">Tăng dần</li>
-              <li data-value="decrease">Giảm dần</li>
+              <li data-value="increase" class="increase">Tăng dần</li>
+              <img src="../src/line.svg" alt="line">
+              <li data-value="decrease" class="decrease">Giảm dần</li>
             </ul>
           </div>
         </div>

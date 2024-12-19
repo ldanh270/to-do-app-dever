@@ -151,6 +151,7 @@ const createNewTask = (textNote, levelNote) => {
   const markBox = document.createElement("div")
 
   markBox.innerHTML = unMarkedIcon
+  markBox.style.cursor = "pointer"
 
   taskBox.appendChild(checkbox)
   taskBox.appendChild(span)

@@ -5,6 +5,7 @@ const filterSort = document.querySelector("#filter-sort")
 const addTaskBtn = document.querySelector("#add-task-btn")
 const listedTasksBox = document.querySelector("#task")
 
+// current lists of tasks
 const tasksList = []
 
 const easyTasksList = []
@@ -63,11 +64,9 @@ const displayFilterSort = (value, list) => {
 
 function displayFilter() {
   listedTasksBox.innerHTML = ""
-
   markList = displayFilterMark(currentFilterMark)
   levelList = displayFilterLevel(currentFilterLevel)
 
-  console.log(currentFilterMark)
   const unSortList = levelList.filter((task) => markList.includes(task))
 
   const sortedList = displayFilterSort(currentFilterSort, unSortList)
@@ -168,7 +167,6 @@ const createNewTask = (textNote, levelNote) => {
       taskBox.classList.remove("marked")
       taskBox.classList.add("unMarked")
       markBox.innerHTML = unMarkedIcon
-      console.log("ok")
       changeMarkTasksList(taskBox, "unMarked")
       displayFilter()
     } else if (markBox.parentElement.classList.contains("unMarked")) {

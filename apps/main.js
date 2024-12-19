@@ -5,6 +5,7 @@ const filterSort = document.querySelector("#filter-sort")
 const addTaskBtn = document.querySelector("#add-task-btn")
 const listedTasksBox = document.querySelector("#task")
 
+// current lists of tasks
 const tasksList = []
 
 const easyTasksList = []
@@ -19,6 +20,7 @@ let markList = []
 
 let currentFilterLevel = "all"
 let currentFilterMark = "all"
+let currentFilterSort = "all"
 
 const markedIcon = `<svg class="task-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M8.78996 1.09998C9.28996 0.0999756 10.71 0.0999756 11.21 1.09998L13.57 5.87998L18.84 6.64998C19.94 6.80998 20.39 8.16998 19.59 8.94998L15.77 12.67L16.67 17.92C16.712 18.1682 16.6838 18.4232 16.5886 18.6562C16.4933 18.8892 16.3348 19.091 16.131 19.2387C15.9271 19.3864 15.686 19.4741 15.4349 19.492C15.1838 19.5099 14.9327 19.4573 14.71 19.34L9.99996 16.86L5.27996 19.34C5.05722 19.4573 4.80611 19.5099 4.55501 19.492C4.30391 19.4741 4.06282 19.3864 3.85896 19.2387C3.6551 19.091 3.4966 18.8892 3.40136 18.6562C3.30611 18.4232 3.27792 18.1682 3.31996 17.92L4.21996 12.67L0.409962 8.94998C-0.390038 8.16998 0.0499618 6.80998 1.15996 6.64998L6.42996 5.87998L8.78996 1.09998Z" fill="#007BFF"/>
@@ -42,25 +44,35 @@ const displayFilterMark = (value) => {
   if (value === "all") return tasksList
 }
 
-const displayFilterSort = (value) => {}
-
 function displayFilter() {
   listedTasksBox.innerHTML = ""
-
   markList = displayFilterMark(currentFilterMark)
   levelList = displayFilterLevel(currentFilterLevel)
 
-  console.log(currentFilterMark)
   const unSortList = levelList.filter((task) => markList.includes(task))
 
-  unSortList.forEach((appliedTask) => {
-    console.log(appliedTask)
+  return unSortList
+}
+
+const displayFilterSort = (value, list) => {
+  listedTasksBox.innerHTML = ""
+  let sortedList = []
+  if (value === "increase") {
+    sortedList = list.sort((a, b) => {
+      const spanA = a.querySelector("span").innerText
+      const spanB = b.querySelector("span").innerText
+      return spanA.localeCompare(spanB)
+    })
+  } else if (value === "decrease") {
+    sortedList = list.sort((a, b) => {
+      const spanA = a.querySelector("span").innerText
+      const spanB = b.querySelector("span").innerText
+      return spanB.localeCompare(spanA)
+    })
+  }
+  sortedList.forEach((appliedTask) => {
     listedTasksBox.appendChild(appliedTask)
   })
-
-  // if (container == filterLevel) {
-  //   displayFilterSort(value)
-  // }
 }
 
 function filterBehavior(container) {
@@ -91,8 +103,15 @@ function filterBehavior(container) {
 
       if (container === filterLevel) currentFilterLevel = value
       else if (container === filterMark) currentFilterMark = value
+      else if (container === filterSort) currentFilterSort = value
 
-      displayFilter()
+      if (container === filterSort) displayFilterSort(value, displayFilter())
+      else {
+        const array = displayFilter()
+        array.forEach((appliedTask) => {
+          listedTasksBox.appendChild(appliedTask)
+        })
+      }
     })
   })
 }
@@ -152,7 +171,6 @@ const createNewTask = (textNote, levelNote) => {
       taskBox.classList.remove("marked")
       taskBox.classList.add("unMarked")
       markBox.innerHTML = unMarkedIcon
-      console.log("ok")
       changeMarkTasksList(taskBox, "unMarked")
       displayFilter()
     } else if (markBox.parentElement.classList.contains("unMarked")) {

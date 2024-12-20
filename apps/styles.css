@@ -207,7 +207,6 @@ input[type="radio"]:checked + .hard-level {
   gap: 4px;
   border-radius: 12px;
   background-color: #ffffffb2;
-  backdrop-filter: blur(30px);
   border: 1px solid #ccc;
 
   text-align: center;
